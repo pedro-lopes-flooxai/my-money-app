@@ -2,7 +2,6 @@ import axios from "axios";
 import { toastr } from "react-redux-toastr";
 import { initialize, reset as resetForm } from 'redux-form'
 import { ShowTabs, selectTab } from "../common/tab/tabActions";
-import { functionsIn } from "lodash";
 
 const BASE_URL = 'http://localhost:3003/api'
 const INITIAL_VALUES = {}
@@ -21,6 +20,10 @@ export function create(values){
 
 export function update(values){
     return submit(values, 'put')
+}
+
+export function remove(values){
+    return submit(values, 'delete')
 }
 
 function submit(values, method){
@@ -45,6 +48,13 @@ export function showUpdate(billingCycle) {
     ]
 }
 
+export function showDelete(billingCycle) {
+    return [
+        ShowTabs('tabDelete'),
+        selectTab('tabDelete'),
+        initialize('billingCycleForm', billingCycle)
+    ]
+}
 export function init() {
     return [
         ShowTabs('tabList', 'tabCreate'),
