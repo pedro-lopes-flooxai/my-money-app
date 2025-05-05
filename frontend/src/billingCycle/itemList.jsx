@@ -51,7 +51,6 @@ class ItemList extends Component {
     }
 
     render() {
-        console.log('Legenda recebida:', this.props.legend)
         return (
             <Grid cols={this.props.cols}>
                 <fieldset>
